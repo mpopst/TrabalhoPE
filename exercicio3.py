@@ -1,9 +1,9 @@
 import numpy as np
 
 def martingal():
-    ans = 0
+    ans = 1
     while True:
-        ans += _executa_xn_()
+        ans *= _executa_xn_()
         yield ans  
 
 def _executa_xn_():
