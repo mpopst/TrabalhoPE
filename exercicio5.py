@@ -11,18 +11,16 @@ def K(X, Xl, sigma, l):
             K[i,j] = kernel_f(X[i], Xl[j], sigma, l)
     return K
 
-def gaussian_fit_vec(X, X_new, Y, cov, l):
+def gaussian_fit_vec(X, X_new, Y, sigma):
     KXX = K(X, X, 1, 1)
     KXnX = K(X_new, X, 1, 1)
     KXXn = K(X, X_new, 1, 1)
     KXnXn = K(X_new, X_new, 1, 1)
     
-    aux = KXnX.dot(np.linalg.inv(KXX+np.multiply(1**2, np.identity(KXX.shape[0]))))
+    aux = KXnX.dot(np.linalg.inv(KXX+sigma**2*np.identity(KXX.shape[0])))
 
     mean = aux.dot(Y)
-    print(aux.dot(KXXn))
-    print(cov**2*np.identity(KXnXn.shape[0]))
-    covariance = KXnXn + cov**2*np.identity(KXnXn.shape[0]) - aux.dot(KXXn)
+    covariance = KXnXn + sigma**2*np.identity(KXnXn.shape[0]) - aux.dot(KXXn)
 
     return(mean, covariance)
 
