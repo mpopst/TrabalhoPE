@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.random import choice
 ## funções auxiliares
 
 def validar_matriz(P: np.matrix, n):
@@ -9,15 +10,10 @@ def validar_matriz(P: np.matrix, n):
             raise ArithmeticError("formato ilegal")
         
 def simulaca_markov(P: np.array, i: int, n: int):
+    size = P.shape[0]
     X = i-1
-    somas_parciais = np.cumsum(P, 1)
     size = P.shape[0]
     for k in range(0,n):
-        aleatorio = np.random.rand()
-        s = 0
-        l = -1
-        while s<aleatorio and l<size:
-            l+=1
-            s+=somas_parciais[X,l]
-        X = l
+        probs = np.squeeze(np.asarray(P[X,:]))
+        X = choice(size,1, p = probs)[0]       
     return X+1

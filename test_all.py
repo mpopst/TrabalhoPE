@@ -84,6 +84,20 @@ class TestExercicio3(unittest.TestCase):
         actual_result = exercicio1(P, i, j, n, qtd)
         self.assertTrue(actual_result > 0)
         
+    def test_exercicio2_verificaSeEValido(self):
+        P = np.matrix([[1/3, 0, 2/3, 0],[1/4, 1/2, 1/4, 0], [1/2, 0, 1/2, 0],[0, 1/3,0,2/3]])
+        validar_matriz(P, 4)
+        self.assertTrue(True)
+        
+    def test_exercicio2_verificaSimulacaoComeca4(self):
+        P = np.matrix([[1/3, 0, 2/3, 0],[1/4, 1/2, 1/4, 0], [1/2, 0, 1/2, 0],[0, 1/3,0,2/3]])
+        X_0, n = 1, 10
+        actual_result = simulaca_markov(P, X_0, n)
+        expected_list = [1,3]
+        self.assertTrue(actual_result in expected_list)
+        
+            
+        
         
 if __name__ == '__main__':
     unittest.main()
