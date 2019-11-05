@@ -1,7 +1,7 @@
 import unittest
-from exercicio1 import exercicio1, simulacao
+from exercicio1 import exercicio1
 from exercicio3 import _executa_xn_, martingal
-from util import validar_matriz
+from util import validar_matriz, simulaca_markov
 import numpy as np
 
 
@@ -61,14 +61,14 @@ class TestExercicio3(unittest.TestCase):
         P = np.matrix([[1/3, 0, 2/3, 0, 0],[1/4,1/2,1/4,0,0],[1/2, 0, 1/2, 0, 0], [0, 0, 0, 0, 1],[0,0,0,2/3,1/3]])
         i, n = 4, 7
         result_list = [4,5]
-        actual_result = simulacao(P, i, n)
+        actual_result = simulaca_markov(P, i, n)
         self.assertTrue(actual_result in result_list)
         
     def test_exercicio1_simulacaoDadosExercicio2(self):
         P = np.matrix([[1/3, 0, 2/3, 0, 0],[1/4,1/2,1/4,0,0],[1/2, 0, 1/2, 0, 0], [0, 0, 0, 0, 1],[0,0,0,2/3,1/3]])
         i, n = 3, 7
         result_list = [1,2,3]
-        actual_result = simulacao(P, i, n)
+        actual_result = simulaca_markov(P, i, n)
         self.assertTrue(actual_result in result_list)
         
     def test_exercicio1_exercico1(self):
