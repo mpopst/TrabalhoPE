@@ -11,7 +11,7 @@ def K(X, Xl, sigma, l):
             K[i,j] = kernel_f(X[i], Xl[j], sigma, l)
     return K
 
-def gaussian_fit_vec(X, X_new, Y, sigma):
+def exercicio5(X, X_new, Y, sigma):
     KXX = K(X, X, 1, 1)
     KXnX = K(X_new, X, 1, 1)
     KXXn = K(X, X_new, 1, 1)
