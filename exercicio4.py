@@ -12,3 +12,4 @@ def teorema448(n: int, lamb: int, T: int) -> np.array:
     # Simulamos todos os n processos (talvez paralelamente), pegando os tempos de mudança 
     # de cada um em n arrays
     # Então, juntamos os arrays
+    return
