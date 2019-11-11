@@ -16,8 +16,8 @@ def simula_black_sholes(S_0, r, sigma, T=1):
 def simula_black_sholes_so_o_final(S_0,r,sigma,T):
     return simula_black_sholes(S_0, r, sigma,T)[-1]
 
-def precifica_call(S_0, r, sigma, T, K, N):
+def precifica_call(r, T, K, N, ST):
     soma = 0
-    for ST in [simula_black_sholes_so_o_final(S_0,r,sigma,T) for n in range(N)]:
-        soma += np.exp(-r*T) * max(ST-K,0)
+    for st in ST:
+        soma += np.exp(-r*T) * max(st-K,0)
     return soma/N
