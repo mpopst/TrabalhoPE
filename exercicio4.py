@@ -11,7 +11,7 @@ def entre_chegadas(lamb: int, T: int):
     return ans
 
 def teorema448(lamb: int, T: int):
-    n = int(lamb*T)
+    n = int(lamb*T) #foi o melhor chute de como escolher n, pois é a esperança do processo de Poisson
     ans = [0]
     for i in range(n):
         ans.append(np.random.uniform(low=0, high=T))
